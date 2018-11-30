@@ -10,11 +10,11 @@
 
 #### The lyrics are broken up into sequences of fixed length. To train the model we feed the model a sequence and have it predict the same sequence shifted by one character. The model itself consists of three parts:
   
-  ##### 1) an embedding layer which maps the sequence vector to a tensor in a 256 dimensional space producing an output of [batch_size, sequence_length, embedding vector]. The vectors representations are learned during training. 
+  ###### *1) an embedding layer which maps the sequence vector to a tensor in a 256 dimensional space producing an output of [batch_size, sequence_length, embedding vector]. The vectors representations are learned during training*. 
   
-  ##### 2) a layer of GRUs which do the heavy lifting and convert the embedding tensors into hidden representations. Unrolling the model through time, at each time step the model uses the hidden state from the previous GRU layer in addition to the character representation to learn the context in which the characters appear and learn words.
+  ###### *2) a layer of GRUs which do the heavy lifting and convert the embedding tensors into hidden representations. Unrolling the model through time, at each time step the model uses the hidden state from the previous GRU layer in addition to the character representation to learn the context in which the characters appear and learn words*.
   
-  ##### 3) A final dense layer which maps the output of the GRU back into the vocab vectors to yield the logits - which is the probabilty of predicting the next character. 
+  ###### *3) A final dense layer which maps the output of the GRU back into the vocab vectors to yield the logits - which is the probabilty of predicting the next character*. 
 
 #### An Adam optimizer and cross entropy loss is used to train the weights. The model is trained on Google Colab and runs pretty quickly when the GPU is enabled. 
 
